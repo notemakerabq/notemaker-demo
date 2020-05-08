@@ -1,0 +1,15 @@
+#!/bin/bash
+
+kubectl create ns notemaker 2>/dev/null 
+
+kubectl create -f mongodb.yaml
+sleep 10
+kubectl create -f notemaker.yaml
+kubectl create -f performance-meter.yaml
+
+kubectl get svc -n notemaker -w 
+
+# kubectl get events -n notemaker 
+
+
+

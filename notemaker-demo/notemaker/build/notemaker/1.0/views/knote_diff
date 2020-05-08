@@ -1,0 +1,7 @@
+echo "Docker file differences"
+diff Dockerfile.non-secure-node Dockerfile.secure-node
+
+echo "package differences"
+diff package.json.non-secure package.json.secure
+
+

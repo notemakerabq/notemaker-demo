@@ -1,0 +1,14 @@
+#!/bin/bash
+
+kubectl create ns notemaker 
+
+kubectl create -f data/mongodb-pvc.yaml
+
+sleep 10
+
+deploy
+
+
+
+
+

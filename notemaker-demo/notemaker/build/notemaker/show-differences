@@ -1,0 +1,9 @@
+echo "Docker file differences"
+diff 1.0/Dockerfile 2.0/Dockerfile | grep FROM
+diff 1.0/Dockerfile 2.0/Dockerfile | grep RUN
+
+echo "package differences"
+diff 1.0/package.json 2.0/package.json
+
+
+

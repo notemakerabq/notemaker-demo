@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ "$#" -eq 1 ]; then
+  ver=$1
+
+  if [ "$ver" == "1.0" ]; then
+    replace "2.0" "1.0" "*.yaml"
+  elif [ $ver == "2.0" ]; then
+    replace "1.0" "2.0" "*.yaml" 
+  else
+    echo "You must pass in 1.0 or 2.0"
+    exit
+  fi
+fi
+
+kubectl apply -f mongodb.yaml
+kubectl apply -f notemaker.yaml
+kubectl apply -f performance-meter.yaml
+
+kubectl get svc -n notemaker -w
+
+

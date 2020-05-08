@@ -1,0 +1,10 @@
+
+echo "destroying everything except PVC for mongodb"
+
+kubectl delete -f notemaker.yaml
+
+kubectl delete -f performance-meter.yaml
+
+kubectl delete -f mongodb.yaml
+
+
