@@ -1,0 +1,38 @@
+#!/bin/bash
+
+echo "Create mysql service"
+kubectl apply -f mysql.yaml
+echo "Waiting for mysql pods to come up"
+ready=""
+while [ -z "$ready" ]; do
+  sleep 6
+  status=$(kubectl get pods -n matomo | grep mysql)
+  echo $status
+  ready=$(echo "$status" | grep -v pending)
+done
+sleep 3
+
+echo "Deploy matomo web-analytics app and service"
+kubectl apply -f matomo.yaml
+echo "Waiting for matomo LoadBalancer service to come up"
+ready=""
+while [ -z "$ready" ]; do
+  sleep 6
+  status=$(kubectl get svc -n web-analytics | grep LoadBalancer)
+  echo $status
+  ready=$(echo "$status" | grep -v pending)
+done
+sleep 3
+
+# echo "Setup users in mysql for matomo"
+# ./createUsersForMYSQL
+
+echo
+echo "Here is our full stack deployment into our kubernetes test cluster"
+kubectl get all -n web-analytics
+
+echo
+echo "Here all the needed passwords for test purposes"
+./echoPasswords
+
+

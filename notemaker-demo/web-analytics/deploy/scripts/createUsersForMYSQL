@@ -1,0 +1,25 @@
+. setupPasswords
+
+pod=$(kubectl get pods  -n web-analytics | grep mysql | awk '{ print $1 }')
+echo "Using pod $pod"
+
+# echo
+# echo "Set root user password for mysqladmin"
+kubectl exec -t $pod -n web-analytics \
+   mysqladmin -- -u root password $MYSQL_ROOT_PASSWORD 
+
+echo "Create admin user for matomo"
+kubectl  exec -t $pod mysql -n web-analytics -- \
+   -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE USER 'admin';"
+   
+# kubectl  exec -t $pod mysql -n web-analytics -- \
+#   -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE USER 'admin' IDENTIFIED BY $MYSQL_ADMIN_PASSWORD;"
+
+echo "Grant usage to admin from any server"
+kubectl  exec -t $pod mysql -n web-analytics -- \
+   -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT USAGE ON *.* TO 'admin'@'%';"
+
+echo "Grant all privileges to admin on any server"
+kubectl  exec -t $pod mysql -n web-analytics -- \
+   -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL privileges ON *.* TO 'admin'@'%'; FLUSH PRIVILEGES;"
+

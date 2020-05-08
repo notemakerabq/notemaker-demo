@@ -1,0 +1,3 @@
+pod=$(kubectl get pods -n web-analytics | grep $1 | awk '{print $1}')
+kubectl logs $pod -n web-analytics 
+

@@ -1,0 +1,8 @@
+#!/bin/bash
+pod=$(kubectl get pods | grep mysql | awk '{ print $1 }')
+echo "Using pod $pod"
+kubectl  exec -t $pod mysql -- \
+   -u root -p$MYSQL_ROOT_PW -e $1
+
+
+

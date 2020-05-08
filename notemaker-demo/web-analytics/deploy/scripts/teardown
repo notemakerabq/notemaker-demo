@@ -1,0 +1,11 @@
+#!/bin/bash
+
+kubectl delete -f matomo.yaml
+
+sleep 5
+
+kubectl delete -f mysql.yaml
+
+
+
+
