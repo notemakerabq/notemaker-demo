@@ -22,10 +22,12 @@ else
 fi
 
 build_image () {
+  pushd $ver
   echo; echo "Building $local from Dockerfile"
   docker build -t $local . > /dev/null
   [[ "$?" != "0" ]] && echo "Build image FAILED, exiting" && exit 1
   docker tag $local $image
+  popd
   return 0
 }
 
@@ -34,7 +36,7 @@ test_image () {
   echo "Functional tests PASSED."
 }
 
-scanErrMsg="Security scan FAILED, exiting, secure it before you share it!"
+scanErrMsg="Security scan FAILED, exiting, secure it before you commit it!"
 scan_image () {
   echo; echo "Scanning $image for vulnerabilities and compliance issues"
   scanImage $image 

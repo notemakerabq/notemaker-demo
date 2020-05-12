@@ -1,15 +1,22 @@
 #!/bin/bash
 
-kubectl create ns notemaker 2>/dev/null 
+[ "$#" -lt 1 ] && echo "You must enter '1.0' or '2.0' and optionally mongo|note|perf" && exit 1
 
-kubectl create -f mongodb.yaml
+[ "$#" -eq 1 ] && op=mongonoteperf
+[ "$#" -eq 2 ] && op=$2
+
+echo; echo "Dploying version $1 of Note Maker application"
+echo "Leveraging existing storage"
+
+cd $1
+[[ "$op" == *"mongo"* ]] && kubectl apply -f mongodb.yaml
 sleep 10
-kubectl create -f notemaker.yaml
-kubectl create -f performance-meter.yaml
+[[ "$op" == *"note"* ]] && kubectl apply -f notemaker.yaml
+[[ "$op" == *"perf"* ]] && kubectl apply -f performance-meter.yaml
+sleep 10
+cd ..
 
-kubectl get svc -n notemaker -w 
 
-# kubectl get events -n notemaker 
 
 
 

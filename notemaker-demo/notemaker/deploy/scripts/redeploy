@@ -1,22 +1,20 @@
 #!/bin/bash
 
-if [ "$#" -eq 1 ]; then
-  ver=$1
+[ "$#" -lt 1 ] && echo "You must enter '1.0' or '2.0' and optionally mongo|note|perf" && exit 1
 
-  if [ "$ver" == "1.0" ]; then
-    replace "2.0" "1.0" "*.yaml"
-  elif [ $ver == "2.0" ]; then
-    replace "1.0" "2.0" "*.yaml" 
-  else
-    echo "You must pass in 1.0 or 2.0"
-    exit
-  fi
-fi
+[ "$#" -eq 1 ] && op=mongonoteperf 
+[ "$#" -eq 2 ] && op=$2
 
-kubectl apply -f mongodb.yaml
-kubectl apply -f notemaker.yaml
-kubectl apply -f performance-meter.yaml
+echo; echo "Redeploying version $1 of Note Maker application"
+echo "Leveraging existing storage"
 
-kubectl get svc -n notemaker -w
+cd $1
+[[ "$op" == *"mongo"* ]] && kubectl delete -f mongodb.yaml
+[[ "$op" == *"note"* ]] && kubectl delete -f notemaker.yaml
+[[ "$op" == *"perf"* ]] && kubectl delete -f performance-meter.yaml
+sleep 10
+cd ..
+
+deploy $@
 
 

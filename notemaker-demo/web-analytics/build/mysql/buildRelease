@@ -34,7 +34,7 @@ test_image () {
   echo "Functional tests PASSED."
 }
 
-scanErrMsg="Security scan FAILED, exiting, secure it before you share it!"
+scanErrMsg="Security scan FAILED, exiting, secure it before you commit it!"
 scan_image () {
   echo; echo "Scanning $image for vulnerabilities and compliance issues"
   scanImage $image 

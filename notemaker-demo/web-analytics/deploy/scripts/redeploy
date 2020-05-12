@@ -1,38 +1,15 @@
 #!/bin/bash
+[ "$#" -lt 1 ] && echo "You must enter '1.0' or '2.0' to instruct which version to redeploy"
 
-echo "Create mysql service"
-kubectl apply -f mysql.yaml
-echo "Waiting for mysql pods to come up"
-ready=""
-while [ -z "$ready" ]; do
-  sleep 6
-  status=$(kubectl get pods -n matomo | grep mysql)
-  echo $status
-  ready=$(echo "$status" | grep -v pending)
-done
-sleep 3
+cd $1
+echo; echo "Redeploying version $1 of Web Analytics application"
+echo "Tearing down current deployment"
+kubectl delete -f matomo.yaml
+kubectl delete -f mysql.yaml
+echo "Previous version deleted, wait for services to terminate"
+sleep 10
+cd ..
 
-echo "Deploy matomo web-analytics app and service"
-kubectl apply -f matomo.yaml
-echo "Waiting for matomo LoadBalancer service to come up"
-ready=""
-while [ -z "$ready" ]; do
-  sleep 6
-  status=$(kubectl get svc -n web-analytics | grep LoadBalancer)
-  echo $status
-  ready=$(echo "$status" | grep -v pending)
-done
-sleep 3
-
-# echo "Setup users in mysql for matomo"
-# ./createUsersForMYSQL
-
-echo
-echo "Here is our full stack deployment into our kubernetes test cluster"
-kubectl get all -n web-analytics
-
-echo
-echo "Here all the needed passwords for test purposes"
-./echoPasswords
+deploy $1
 
 

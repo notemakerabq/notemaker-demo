@@ -2,7 +2,7 @@
 # using version number only for local tag, only one version of mongo # op can have 'auto' in it and one or more of build, scan, push
 # for example "autobuildscan"  or "scanpush"
 
-[ "$#" -lt 2 ] && echo "You must enter '1.0' or '2.0' and string with one or more of 'all|build|test|scan|push'" && exit
+[ "$#" -lt 2 ] && echo "You must enter '1.0' or '2.0' and string with one or more of 'all|build|secure|test|scan|push'" && exit
 
 ver=$1
 op=$2
@@ -34,7 +34,7 @@ test_image () {
   echo "Functional tests PASSED."
 }
 
-scanErrMsg="Security scan FAILED, exiting, secure it before you share it!"
+scanErrMsg="Security scan FAILED, exiting, secure it before you commit it!"
 scan_image () {
   echo; echo "Scanning $image for vulnerabilities and compliance issues"
   scanImage $image 
