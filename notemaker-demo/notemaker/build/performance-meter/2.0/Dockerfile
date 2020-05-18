@@ -1,6 +1,6 @@
 FROM alpine 
 
-LABEL maintainer="Matthew Barker"
+LABEL maintainer="Matt Barker"
 LABEL application="NoteMaker" 
 LABEL tier="database" 
 LABEL appVersion="1.0"

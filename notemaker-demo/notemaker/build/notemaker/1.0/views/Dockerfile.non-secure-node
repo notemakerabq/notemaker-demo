@@ -1,5 +1,5 @@
 FROM node:12
-LABEL maintainer="Matthew"
+LABEL maintainer="Matt"
 LABEL security="average"
 
 COPY . .

@@ -1,5 +1,5 @@
 FROM node:alpine
-LABEL maintainer="Matthew"
+LABEL maintainer="Matt"
 LABEL security="better"
 
 COPY . .

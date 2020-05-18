@@ -1,5 +1,5 @@
 FROM node:alpine
-LABEL maintainer="Matthew B"
+LABEL maintainer="Matt B"
 LABEL application="NoteMaker"
 LABEL tier="web"
 LABEL version="2.0"

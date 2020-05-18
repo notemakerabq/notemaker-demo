@@ -30,8 +30,8 @@ build_image () {
 }
 
 test_image () {
-  echo; echo "Performing functional tests.."; sleep 3
-  echo "Functional tests PASSED."
+  echo; echo "Performing unit tests.."; sleep 3
+  echo "Unit tests PASSED."
 }
 
 scanErrMsg="Security scan FAILED, exiting, secure it before you commit it!"

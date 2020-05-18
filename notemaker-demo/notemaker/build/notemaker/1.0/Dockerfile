@@ -1,6 +1,6 @@
 FROM node:12.0-slim
 
-LABEL maintainer="Matt1 Barker"
+LABEL maintainer="MLBarker"
 LABEL application="NoteMaker"
 LABEL tier="web"
 LABEL version="1.0"

@@ -1,5 +1,5 @@
 FROM mongo 
-LABEL maintainer="Matthew Barker"
+LABEL maintainer="Matt Barker"
 LABEL tier="database"
 LABEL application="NoteMaker"
 LABEL appVersion==="2.0"
