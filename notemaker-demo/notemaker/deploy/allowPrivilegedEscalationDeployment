@@ -1,7 +1,0 @@
-allowPrivilegedEscalationForNoteMaker
-kubectl apply -f 1.0/notemaker.yaml
-sleep 5
-
-show events
-
-

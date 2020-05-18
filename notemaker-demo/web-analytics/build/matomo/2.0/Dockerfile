@@ -1,5 +1,5 @@
 FROM wonderfall/matomo 
-MAINTAINER owner="Matthew Barker"
+MAINTAINER owner="Matt Barker"
 LABEL application="WebAnalytics"
 LABEL tier="web"
 LABEL appVersion==="2.0"

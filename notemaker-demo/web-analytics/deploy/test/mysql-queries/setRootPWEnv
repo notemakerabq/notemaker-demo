@@ -1,6 +1,6 @@
 export MYSQL_ROOT_PASSWORD='PrismaIsSecure2xyyZ'
 export MYSQL_ADMIN_PASSWORD='PrismaIsSecure5xuv'
-export MATOMO_SUPER_USER='Matthew'
+export MATOMO_SUPER_USER='Matt'
 export MATOMO_SUPER_USER_PASSWORD='pcIsSecure2'
 export MATOMO_DATABASE_USERNAME='matomo'
 export MATOMO_DATABASE_PASSWORD='prismaCloudz1'

@@ -1,6 +1,6 @@
 FROM mysql:5.6
 
-LABEL maintainer="Matthew Barker"
+LABEL maintainer="MLBarker"
 LABEL application="WebAnalytics" 
 LABEL tier="database" 
 LABEL appVersion="1.0"
