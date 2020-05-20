@@ -1,5 +1,5 @@
 FROM matomo 
-LABEL MAINTAINER="Matthew Barker"
+LABEL MAINTAINER="MLBarker"
 LABEL application="WebAnalytics"
 LABEL tier="web"
 LABEL appVersion==="1.0"
