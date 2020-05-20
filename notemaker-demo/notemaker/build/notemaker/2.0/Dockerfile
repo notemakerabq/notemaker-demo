@@ -14,3 +14,5 @@ RUN npm audit fix
 USER node
 
 CMD [ "node", "index.js" ]
+
+LABEL patch="1"

@@ -11,3 +11,6 @@ RUN apt update && apt install -y iputils-ping
 COPY . .
 RUN npm install
 CMD [ "node", "index.js" ]
+
+LABEL patch="1.1"
+
