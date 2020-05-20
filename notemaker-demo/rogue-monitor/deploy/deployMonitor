@@ -1,0 +1,10 @@
+#!/bin/bash
+
+kubectl create -f monitor.yaml
+
+kubectl get svc -n notemaker -w
+
+
+kubectl get events -n notemaker
+
+
