@@ -9,8 +9,9 @@ op=$2
 local=websvc:$ver
 image=notemaker/$local
 
+[[ "$op" == *"secure"* ]] && scan=true
+
 if [[ "$op" == *"all"* ]]; then
-  [[ "$op" == *"secure"* ]] && scan=true
   build=true && test=true && push=true
 else
   [[ "$op" == *"build"* ]] && build=true

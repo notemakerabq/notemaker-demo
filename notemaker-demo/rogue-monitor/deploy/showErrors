@@ -1,3 +1,0 @@
-kubectl get events -n notemaker | grep -i compliance
- 
-
