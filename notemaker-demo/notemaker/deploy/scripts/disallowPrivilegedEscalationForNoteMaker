@@ -1,5 +1,0 @@
-#!/bin/bash
-
-cp 1.0/notemaker.yaml.2 1.0/notemaker.yaml
-echo "Changed notemaker.yaml to disallow privileged execution"
-
