@@ -1,6 +1,6 @@
 FROM node:12.0-slim
 
-LABEL maintainer="MLBarker"
+LABEL maintainer="Matt Barker"
 LABEL application="NoteMaker"
 LABEL tier="web"
 LABEL version="1.0"
@@ -12,5 +12,5 @@ COPY . .
 RUN npm install
 CMD [ "node", "index.js" ]
 
-LABEL patch="1.2"
+LABEL patch="1.1.1"
 

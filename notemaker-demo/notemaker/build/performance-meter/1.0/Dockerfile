@@ -1,6 +1,6 @@
 FROM alpine:3.9 
 
-LABEL maintainer="MLBarker"
+LABEL maintainer="Matt Barker"
 LABEL application="NoteMaker" 
 LABEL tier="database" 
 LABEL appVersion="1.0"
@@ -16,5 +16,5 @@ COPY collectStats.sh collectStats.sh
 ENTRYPOINT ["./collectStats.sh"]
 CMD ["300"]
 
-LABEL patch="1.1.1.1"
+LABEL patch="1"
 

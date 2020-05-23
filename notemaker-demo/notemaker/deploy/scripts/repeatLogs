@@ -1,4 +1,4 @@
-pod=$(kubectl get pods -n notemaker | grep $1 | awk '{print $1}')
+pod=$(kubectl get pods -n notemaker | grep $1 | head -1 | awk '{print $1}')
 count=1
 while true; do
   kubectl logs $pod -n notemaker 

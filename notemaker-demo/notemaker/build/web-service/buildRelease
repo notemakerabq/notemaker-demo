@@ -23,7 +23,7 @@ fi
 build_image () {
   cd $ver
   echo; echo "Building $local from Dockerfile"
-  docker build -t $local . > /dev/null
+  docker build -t $local . > /dev/null 
   [[ "$?" != "0" ]] && echo "Build image FAILED, exiting" && exit 1
   docker tag $local $image
   cd ..
