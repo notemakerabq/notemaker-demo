@@ -28,7 +28,7 @@ print_msg "This only works with 20.04 hosted release and uses --ci flag"
 print_msg "scan results saved on $TL_CONSOLE/#!/monitor/vulnerabilities/images/ci"
 
 echo
-echo "------------ Utilizing twistcli image scan to scan $image --------------"
+echo "------------ Utilizing twistcli to scan $image --------------------"
 result=$(twistcli images scan -u $TL_USER -p $TL_USER_PW --address $TL_CONSOLE \
    --ci $params | grep -v DATA)
 

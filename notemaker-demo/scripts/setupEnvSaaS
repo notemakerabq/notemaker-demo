@@ -16,7 +16,7 @@ read -p "Do you want to download the latest version of twistcli(y/n)? " -n 1 -r
 echo
 [[ $REPLY =~ [Yy]$ ]] && download-twistcli
 
-twistcli -version
+twistcli -v
 
 echo "setup to use version SaaS version of Prisma Cloud on $TL_CONSOLE"
 echo "set environment variables TL_USER, TL_USER_PW, TL_CONSOLE_API, and TL_CONSOLE"
