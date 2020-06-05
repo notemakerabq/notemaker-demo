@@ -1,15 +1,18 @@
 #!/bin/bash
-[ "$#" -lt 1 ] && echo "You must enter '1.0' or '2.0' to instruct which version to redeploy"
+
+[ "$#" -lt 1 ] && echo "You must enter '1.0' or '2.0' and optionally matomo|mysql" && exit 1
+
+[ "$#" -eq 1 ] && op=matomomysql 
+[ "$#" -eq 2 ] && op=$2
+
+echo; echo "Redeploying version $1 of Web Analytics application"
+echo "Leveraging existing storage"
 
 cd $1
-echo; echo "Redeploying version $1 of Web Analytics application"
-echo "Tearing down current deployment"
-kubectl delete -f matomo.yaml
-kubectl delete -f mysql.yaml
-echo "Previous version deleted, wait for services to terminate"
+[[ "$op" == *"matomo"* ]] && kubectl delete -f matomo.yaml
+[[ "$op" == *"mysql"* ]] && kubectl delete -f mysql.yaml
 sleep 10
 cd ..
 
-deploy $1
-
+deploy $@
 

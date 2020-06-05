@@ -1,33 +1,23 @@
 #!/bin/bash
-# expects ns, secrets, and pvc's already created
 
-[ "$#" -lt 1 ] && echo "You must enter '1.0' or '2.0'" && exit 1
+[ "$#" -lt 1 ] && echo "You must enter '1.0' or '2.0' and optionally matomo|mysql" && exit 1
+
+# if no 2nd parameter passed in, deploy all
+[ "$#" -eq 1 ] && op=matomomysql
+[ "$#" -eq 2 ] && op=$2
+
+echo; echo "Deploying version $1 of Note Maker application"
+echo "Leveraging existing storage"
 
 cd $1
-echo "Create mysql service"
-kubectl create -f mysql.yaml
-sleep 5
-
-echo "Deploy matomo web analytics application and service"
-kubectl create -f matomo.yaml
-echo "Waiting for matomo LoadBalancer service to come up"
-ready=""
-while [ -z "$ready" ]; do
-  sleep 6
-  status=$(kubectl get svc -n web-analytics | grep LoadBalancer)
-  echo $status
-  ready=$(echo "$status" | grep -v pending)
-done
-sleep 3
-
-echo
-echo "Here is our full stack deployment into our kubernetes test cluster"
-kubectl get all -n web-analytics
-
+[[ "$op" == *"matomo"* ]] && kubectl apply -f matomodb.yaml
+sleep 10
+[[ "$op" == *"mysql"* ]] && kubectl apply -f mysql.yaml
+sleep 10
 cd ..
 
-echo
-echo "Here all the needed passwords for test purposes"
 echoPasswords
+
+
 
 
