@@ -8,4 +8,7 @@ Steps to setup for demo:
    (run them from notemaker/deploy folder)
    first one would be 'initialDeploy'
    again, run script without any parameters to see usage
+6. Container focused pen tests are in notemaker/pentest, check README.md file at that location 
+ 
+
  
