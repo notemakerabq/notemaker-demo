@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "Make sure proper version of twistcli is in your PATH or add a full path below"
+echo "For scanning user only needs CI Role; for API POST, operator or admin role"
+
+export DEMO_BASE='<git repo notemaker base>'
+# SAMPLE:  export DEMO_BASE='/var/home/core/git-repos/notemaker-demo'
+
+export PATH=$DEMO_BASE/scripts:./scripts:$PATH
+export TL_USER='<user with proper privs>' > /dev/null
+export TL_USER_PW='<changeme>' > /dev/null
+export TL_CONSOLE='<openshift route to Compute Console>' > /dev/null
+# SAMPLE: export TL_CONSOLE='https://twistlock-console-twistlock.apps.yossi-ocp43.ose43.authnfox.com' 
+export TL_CONSOLE_API="$TL_CONSOLE/api/v1" > /dev/null
+export CRIO="true"
+
+twistcli -version
+
+echo "setup to use self hosted version of Prisma Cloud on $TL_CONSOLE"
+echo "set environment variables TL_USER, TL_USER_PW, TL_CONSOLE_API, and TL_CONSOLE"
+
+

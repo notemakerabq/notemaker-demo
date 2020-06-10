@@ -8,16 +8,20 @@
 
 params=""
 verbose=false
-image="${@: -1}"
+image=""
 
 # params to twistcli includes image to scan as last one
 if [ "$1" == '-v' ]; then
-  params="${@:2}"
+  image="$2"
+  params="${@:3}"
   verbose=true
 else
-  params="$@"
+  image=$1
+  params="$@:2"
 fi
 
+SCAN=twistcli
+[[ "$CRIO" == "true" ]] && image="localhost/$image" && SCAN="sudo /usr/local/bin/twistcli"
    
 # pass in v to get verbose print_msgs
 print_msg() {
@@ -29,8 +33,8 @@ print_msg "scan results saved on $TL_CONSOLE/#!/monitor/vulnerabilities/images/c
 
 echo
 echo "------------ Utilizing twistcli to scan $image --------------------"
-result=$(twistcli images scan -u $TL_USER -p $TL_USER_PW --address $TL_CONSOLE \
-   --ci $params | grep -v DATA)
+result=$($SCAN images scan -u $TL_USER -p $TL_USER_PW --address $TL_CONSOLE \
+   --ci $image $params | grep -v DATA)
 
 printf "%s\n" "$result"
 
