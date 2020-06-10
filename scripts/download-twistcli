@@ -11,7 +11,7 @@ case "$OSTYPE" in
   
   linux*)
         echo "Downloading Linux version of twistcli, please be patient"
-    curl -o twistcl -sku $TL_USER:$TL_USER_PW $TL_CONSOLE_API/util/twistcli 
+    curl -o twistcli -sku $TL_USER:$TL_USER_PW $TL_CONSOLE_API/util/twistcli 
     chmod +x twistcli
     ;;
   
