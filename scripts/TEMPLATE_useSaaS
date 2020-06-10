@@ -18,7 +18,9 @@ echo
 mv twistcli $TL_DEMO_ROOT_FOLDER/scripts
 twistcli -v
 
-echo "setup to use version SaaS version of Prisma Cloud on $TL_CONSOLE and twistcli in PATH"
-echo "set environment variables TL_DEMO_ROOT_FOLDER, TL_USER, TL_USER_PW, TL_CONSOLE_API, and TL_CONSOLE"
+echo "Using SaaS version of Prisma Cloud Notemaker Demo wth twistcli in PATH"
+echo "these environment variables have been setup in addition to TL_USER_PW: "
+env | grep TL | grep -v PW
+
 
 
