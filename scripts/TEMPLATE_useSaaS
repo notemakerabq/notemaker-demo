@@ -4,9 +4,9 @@ echo "Make sure twistcli is in your PATH or add a full path below"
 echo "Make sure access key is generated from a user account with scanning and API privileges"
 echo "For scanning user only needs CI Role; for API POST, operator or admin role"
 
-export DEMO_BASE='<root folder of your demo code>'
-# SAMPLE export DEMO_BASE='/Users/mbarker/git-repo-notemaker/notemaker-demo'
-export PATH=$DEMO_BASE/scripts:./scripts:$PATH
+export TL_DEMO_ROOT_FOLDER='<root folder of your demo code>'
+# SAMPLE export TL_DEMO_ROOT_FOLDER='/Users/mbarker/git-repo-notemaker/notemaker-demo'
+export PATH=$TL_DEMO_ROOT_FOLDER/scripts:./scripts:$PATH
 export TL_USER='<access key' > /dev/null
 export TL_USER_PW='<secret key' > /dev/null
 export TL_CONSOLE='<console URL>
@@ -15,10 +15,10 @@ export TL_CONSOLE_API="$TL_CONSOLE/api/v1" > /dev/null
 read -p "Do you want to download the latest version of twistcli(y/n)? " -n 1 -r
 echo
 [[ $REPLY =~ [Yy]$ ]] && download-twistcli
-mv twistcli $DEMO_BASE/scripts
+mv twistcli $TL_DEMO_ROOT_FOLDER/scripts
 twistcli -v
 
 echo "setup to use version SaaS version of Prisma Cloud on $TL_CONSOLE and twistcli in PATH"
-echo "set environment variables DEMO_BASE, TL_USER, TL_USER_PW, TL_CONSOLE_API, and TL_CONSOLE"
+echo "set environment variables TL_DEMO_ROOT_FOLDER, TL_USER, TL_USER_PW, TL_CONSOLE_API, and TL_CONSOLE"
 
 

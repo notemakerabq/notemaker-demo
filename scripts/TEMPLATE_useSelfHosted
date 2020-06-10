@@ -3,9 +3,9 @@
 echo "Make sure proper version of twistcli is in your PATH or add a full path below"
 echo "For scanning user only needs CI Role; for API POST, operator or admin role"
 
-export DEMO_BASE='<git repo base folder>/notemaker-demo'
-# SAMPLE DEMO_BASE='~mbarker/git-repo-notemaker/notemaker-demo'
-export PATH=$DEMO_BASE/scripts:./scripts:$PATH
+export TL_DEMO_ROOT_FOLDER='<git repo base folder>/notemaker-demo'
+# SAMPLE TL_DEMO_ROOT_FOLDER='~mbarker/git-repo-notemaker/notemaker-demo'
+export PATH=$TL_DEMO_ROOT_FOLDER/scripts:./scripts:$PATH
 export TL_USER='<user with correct privs>' > /dev/null
 export TL_USER_PW='changeme' > /dev/null
 export TL_CONSOLE='<consoleURLwithport>' > /dev/null
@@ -15,7 +15,7 @@ export TL_CONSOLE_API="$TL_CONSOLE/api/v1" > /dev/null
 read -p "Do you want to download the latest version of twistcli(y/n)? " -n 1 -r
 echo
 [[ $REPLY =~ [Yy]$ ]] && download-twistcli
-
+mv twistcli $TL_DEMO_ROOT_FOLDER/scripts
 twistcli -v
 
 echo "setup to use self hosted version of Prisma Cloud on $TL_CONSOLE"
