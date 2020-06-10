@@ -20,8 +20,8 @@ else
   params="$@:2"
 fi
 
-SCAN=twistcli
-[[ "$CRIO" == "true" ]] && image="localhost/$image" && SCAN="sudo /usr/local/bin/twistcli"
+SCAN="$DEMO_BASE/twistcli"
+[[ "$CRIO" == "true" ]] && image="localhost/$image" && SCAN="sudo $SCAN"
    
 # pass in v to get verbose print_msgs
 print_msg() {
