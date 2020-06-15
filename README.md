@@ -20,6 +20,9 @@
     
 7. Container focused pen tests are in notemaker/pentest, check README.md file at that location for instructions 
 
+### Recording of demo available
+ https://paloaltonetworks.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4e4bd448-849e-4be7-ab7b-abc80016ac99
+
 ### How to leverage SAP Demo to demo all core features in Prisma Cloud
 Consider a typical CI/CD pipeline - Dev, Build, Share (registry), Test, Deploy
 
