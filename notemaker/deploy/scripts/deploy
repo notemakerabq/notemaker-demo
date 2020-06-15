@@ -21,6 +21,7 @@ if [[ "$op" == *"web"* ]]; then
   kubectl apply -f web-service.yaml
   waitsvc web 
   ip=$(kubectl get svc -n notemaker | grep web-service | awk '{print $3}')
-  echo "Use browser to create some notes at $ip" to generate runtime models"   
+  echo "Use browser to create some notes at $ip to generate runtime models"   
+fi
 cd ..
 
