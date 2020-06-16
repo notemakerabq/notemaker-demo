@@ -6,4 +6,3 @@ cd $1
 sed -i 's/LABEL patch="2/LABEL patch="2.1/' Dockerfile
 cd ..
 
-

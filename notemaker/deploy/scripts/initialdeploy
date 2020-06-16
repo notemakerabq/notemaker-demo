@@ -6,7 +6,6 @@ echo; echo "Initial deploy of version $1 of Note Maker application"
 echo "Creating namespace and storage"
 kubectl create ns notemaker 
 kubectl create -f data/mongodb-pvc.yaml
-kubectl create -f data/web-service-pvc.yaml
 
 sleep 10
 

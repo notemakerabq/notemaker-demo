@@ -1,7 +1,0 @@
-#/bin/bash
-
-imageID=$(docker images unoteit/matomo | grep unoteit | awk '{print $3}')
-docker images | grep $imageID
- 
-docker push unoteit/matomo
-

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-kubectl get $1 -n web-analytics
-
-

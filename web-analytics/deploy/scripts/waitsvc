@@ -1,5 +1,0 @@
-#!/bin/bash
-
-kubectl get svc -n web-analytics -w 
-
-

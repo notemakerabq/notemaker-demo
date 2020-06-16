@@ -15,4 +15,4 @@ USER node
 
 CMD [ "node", "index.js" ]
 
-LABEL patch="1"
+LABEL patch="2"
