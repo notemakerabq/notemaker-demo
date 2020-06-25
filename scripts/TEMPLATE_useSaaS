@@ -1,26 +1,32 @@
 #!/bin/bash
 
-echo "Make sure twistcli is in your PATH or add a full path below"
+echo
 echo "Make sure access key is generated from a user account with scanning and API privileges"
 echo "For scanning user only needs CI Role; for API POST, operator or admin role"
 
 export TL_DEMO_ROOT_FOLDER='<root folder of your demo code>'
-# SAMPLE export TL_DEMO_ROOT_FOLDER='/Users/mbarker/git-repo-notemaker/notemaker-demo'
-export PATH=$TL_DEMO_ROOT_FOLDER/scripts:./scripts:$PATH
+# SAMPLE export TL_DEMO_ROOT_FOLDER='/Users/mbarker/git-repo-notemaker/notemaker-demo' export PATH=$TL_DEMO_ROOT_FOLDER/scripts:./scripts:$PATH
 export TL_USER='<access key' > /dev/null
 export TL_USER_PW='<secret key' > /dev/null
 export TL_CONSOLE='<console URL>
 export TL_CONSOLE_API="$TL_CONSOLE/api/v1" > /dev/null
 
-read -p "Do you want to download the latest version of twistcli(y/n)? " -n 1 -r
+# if run with no parameters, ask if one wants to download twistcli
+if [ ?# .eq 0 ]; then
+  echo
+  read -p "Do you want to download the latest version of twistcli(y/n)? " -n 1 -r
+  [[ $REPLY =~ [Yy]$ ]] && download-twistcli && mv twistcli $TL_DEMO_ROOT_FOLDER/scripts
+  mv twistcli $TL_DEMO_ROOT_FOLDER/scripts
+fi
+
 echo
-[[ $REPLY =~ [Yy]$ ]] && download-twistcli
-mv twistcli $TL_DEMO_ROOT_FOLDER/scripts
+echo "Make sure twistcli is in your PATH and the version matches the console"
 twistcli -v
 
+echo
 echo "Using SaaS version of Prisma Cloud Notemaker Demo wth twistcli in PATH"
 echo "these environment variables have been setup in addition to TL_USER_PW: "
+echo
 env | grep TL | grep -v PW
-
-
+echo
 
